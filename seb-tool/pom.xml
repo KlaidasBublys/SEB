@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.seb.tool</groupId>
+  <artifactId>seb-pom</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+	<modules>
+		<module>seb-tool-api</module>
+		<module>seb-tool-domain</module>
+		<module>seb-tool-services</module>
+		<module>seb-tool-web-services</module>
+		<module>seb-tool-client</module>
+		<module>seb-tool-app</module>
+	</modules>
+
+	<properties>
+		<!-- Spring framework -->
+		<org.springframework.spring.version>4.3.2.RELEASE</org.springframework.spring.version>
+		<!-- Jackson -->
+		<com.jackson.core.version>2.8.1</com.jackson.core.version>
+		<!-- Compiler version -->
+		<java.source.version>1.8</java.source.version>
+		<java.target.version>1.8</java.target.version>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<!-- Spring framework -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${org.springframework.spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${org.springframework.spring.version}</version>
+			</dependency>
+			<!-- Jackson (this dependency is strictly needed by Spring framework when using REST API from client) -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${com.jackson.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${com.jackson.core.version}</version>
+			</dependency>
+			<!-- Seb tool -->
+			<dependency>
+				<groupId>com.seb.tool</groupId>
+				<artifactId>seb-tool-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.seb.tool</groupId>
+				<artifactId>seb-tool-client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.seb.tool</groupId>
+				<artifactId>seb-tool-domain</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.seb.tool</groupId>
+				<artifactId>seb-tool-services</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.seb.tool</groupId>
+				<artifactId>seb-tool-web-services</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.5.1</version>
+					<configuration>
+						<source>${java.source.version}</source>
+						<target>${java.target.version}</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+  
+</project>
