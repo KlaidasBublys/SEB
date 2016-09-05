@@ -52,4 +52,18 @@ public class Bundle {
 		this.value = value;
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Bundle Id: ");
+		builder.append(this.id);
+		builder.append(", Bundle Name: ");
+		builder.append(this.bundleName);
+		builder.append(", Bundle Products: ");
+		builder.append(this.products);
+		builder.append(", Bundle Value: ");
+		builder.append(this.value);
+		return builder.toString();
+	}
+	
 }

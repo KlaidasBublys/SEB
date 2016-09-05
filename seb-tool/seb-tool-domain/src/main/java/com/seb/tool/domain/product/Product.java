@@ -58,4 +58,20 @@ public class Product {
 		this.isDebitCard = isDebitCard;
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Product Id: ");
+		builder.append(this.id);
+		builder.append(", Product Name: ");
+		builder.append(this.productName);
+		builder.append(", Product Rule: ");
+		builder.append(this.productRule.toString());
+		builder.append(", Is Account: ");
+		builder.append(this.isAccount);
+		builder.append(", Is Debit Card: ");
+		builder.append(this.isDebitCard);
+		return builder.toString();
+	}
+	
 }

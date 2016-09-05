@@ -56,7 +56,7 @@ public class BundleServiceImpl implements BundleService {
 	}
 
 	@Override
-	public List<Bundle> suggestedBundles(Customer customer) {
+	public Bundle suggestedBundle(Customer customer) {
 		List<Bundle> passedBundles = new ArrayList<>();
 		for (Bundle bundle : bundles) {
 			if (bundle.getProducts() != null) {
@@ -67,12 +67,15 @@ public class BundleServiceImpl implements BundleService {
 				}
 			}
 		}
-		return passedBundles;
+		return getMostValuableBundle(passedBundles);
 	}
 
-	@Override
-	public Bundle getMostValuableBundle(List<Bundle> bundles) {
-		return Collections.max(bundles, new BundleComparator());
+	private Bundle getMostValuableBundle(List<Bundle> bundles) {
+		if (bundles.size() != 0) {
+			return Collections.max(bundles, new BundleComparator());
+		} else {
+			return null;
+		}
 	}
 	
 	class BundleComparator implements Comparator<Bundle> {

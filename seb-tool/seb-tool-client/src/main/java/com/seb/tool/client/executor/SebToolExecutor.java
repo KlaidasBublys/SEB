@@ -1,12 +1,12 @@
 package com.seb.tool.client.executor;
 
 import java.net.URI;
-import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import com.seb.tool.domain.bundle.Bundle;
 import com.seb.tool.domain.customer.Customer;
 
 public class SebToolExecutor {
@@ -31,13 +31,13 @@ public class SebToolExecutor {
 		// Update founded Customer
 		System.out.println("Update founded Customer using REST API");
 		Customer updatedCustomer = new Customer();
-		updatedCustomer.setAge(16);
+		updatedCustomer.setAge(18);
 		updatedCustomer.setIncome(50000);
-		updatedCustomer.setStudent(false);
+		updatedCustomer.setStudent(true);
 		restTemplate.put(location, updatedCustomer);
 		System.out.println("Customer updated using REST API");
 		System.out.println("Suggest bundles using REST API");
-		ResponseEntity<List> suggestedBundles = restTemplate.postForEntity(REST_SERVICES_URL + "/bundle/", updatedCustomer, List.class);
+		ResponseEntity<Bundle> suggestedBundles = restTemplate.postForEntity(REST_SERVICES_URL + "/bundle/", updatedCustomer, Bundle.class);
 		System.out.println(suggestedBundles.getBody());
 	}
 	

@@ -1,7 +1,5 @@
 package com.seb.tool.web.service.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +19,9 @@ public class BundleRestController implements RestControllerMarker {
 	private BundleService bundleService;
 	
 	@RequestMapping(value = "/bundle/", method = RequestMethod.POST)
-	public ResponseEntity<List<Bundle>> suggestedBundles(@RequestBody Customer customer) {
-		List<Bundle> suggestedBundles = bundleService.suggestedBundles(customer);
-		return new ResponseEntity<List<Bundle>>(suggestedBundles, HttpStatus.CREATED);
+	public ResponseEntity<Bundle> suggestedBundles(@RequestBody Customer customer) {
+		Bundle suggestedBundles = bundleService.suggestedBundle(customer);
+		return new ResponseEntity<Bundle>(suggestedBundles, HttpStatus.CREATED);
 	}
 	
 }

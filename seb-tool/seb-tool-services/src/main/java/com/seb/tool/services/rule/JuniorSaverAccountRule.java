@@ -11,7 +11,7 @@ public class JuniorSaverAccountRule {
 	public boolean evaluate(Object[] customerContext) {
 		if (customerContext[0] instanceof Customer) {
 			Customer customer = (Customer) customerContext[0];
-			if (customer.getAge() < 17) {
+			if (customer.getAge() < 18) {
 				return true;
 			} else {
 				return false;

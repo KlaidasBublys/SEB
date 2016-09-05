@@ -25,7 +25,7 @@ public class DebitCard {
 			}
 			return isAccountExist;
 		} else {
-			return false;
+			return true;
 		}
 	}
 
